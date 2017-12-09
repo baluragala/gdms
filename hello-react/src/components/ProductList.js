@@ -12,14 +12,15 @@ class ProductList extends React.Component {
                 {id: 3, title: 'micro-oven', price: 299},
                 {id: 4, title: 'knife', price: 8}
             ]
-        }
+        };
         this.addProduct()
     }
 
     renderProducts() {
         let {products} = this.state;
         let productsMarkup = products.map(p => (
-            <ProductListItem title={p.title} price={p.price}/>
+            <ProductListItem title={p.title} price={p.price} dummyFn={() => {
+            }} product={{}}/>
         ));
 
         return productsMarkup;
@@ -29,16 +30,21 @@ class ProductList extends React.Component {
         setTimeout(() => {
             let {products} = this.state;
             products.push({id: 5, title: 'mixer', price: 180});
-            this.setState({products})
+            this.setState({products});
             //this.state.products = products;
             console.log(this.state);
         }, 5000)
+    }
+
+    handleClick(e) {
+        console.log(e);
     }
 
     render() {
         return (
             <div>
                 <h1>Products</h1>
+                <button onClick={this.handleClick}>Add Product</button>
                 {this.renderProducts()}
             </div>
         )
