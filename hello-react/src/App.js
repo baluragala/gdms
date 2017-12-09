@@ -2,7 +2,8 @@ import React from 'react';
 import './App.css';
 import TimedHeader from "./components/TimedHeader";
 import Fruits from "./components/Fruits";
-import ProductList from "./components/ProoductList";
+import ProductList from "./components/ProductList";
+import AddProduct from "./components/AddProduct";
 
 
 class App extends React.Component {
@@ -17,7 +18,8 @@ class App extends React.Component {
                 {/*<h1 id="head">Hello {title}</h1>
                 <TimedHeader/>
                 <Fruits/>*/}
-                <ProductList/>
+                <AddProduct/>
+               {/* <ProductList/>*/}
             </div>
         )
     }
@@ -25,7 +27,7 @@ class App extends React.Component {
 
 
 const styles = {
-    main: {color: 'purple', textAlign: 'center'}
+    main: {color: 'purple', margin: 10}
 };
 
 export default App

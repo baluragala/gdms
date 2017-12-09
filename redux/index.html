@@ -2,9 +2,63 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Just Redux</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/redux/3.7.2/redux.js"></script>
 </head>
 <body>
-$END$
+
+<button onclick="store.dispatch(incrementAction)">INC</button>
+<label id="counter">N/A</label>
+<button onclick="store.dispatch(decrementAction)">DEC</button>
+<script>
+    /*
+        1. store
+        2. action
+        3. reducer
+
+        Development order
+        1. What are you app actions
+        2. code reducer to respond to actions
+        3. create store
+
+     */
+
+    let incrementAction = {
+        type: 'INC'
+    };
+
+    let decrementAction = {
+        type: 'DEC'
+    };
+
+    function reducer(prevState = 0, action) {
+        let newState = prevState;
+
+        if (action.type === 'INC') {
+            newState = prevState + 1;
+        }
+
+        if (action.type === 'DEC') {
+            newState = prevState - 1;
+        }
+
+        return newState;
+
+    }
+
+    const store = Redux.createStore(reducer);
+
+    store.subscribe(() => document.getElementById('counter').innerText = store.getState());
+
+    /* store.dispatch(incrementAction);
+     store.dispatch(incrementAction);
+     store.dispatch(incrementAction);
+     store.dispatch(incrementAction);
+     store.dispatch(incrementAction);
+     store.dispatch(decrementAction);
+ */
+
+</script>
+
 </body>
 </html>
